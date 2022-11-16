@@ -17,7 +17,7 @@ import com.example.BookApp.repository.UserRepository;
 
 @Component
 public class UserImpl implements UserInterface {
-    // Declaring User Repository and creating object using autowired
+    // Declaring Repositories and creating object using autowired
     @Autowired
     private UserRepository userRepository;
 
@@ -27,8 +27,7 @@ public class UserImpl implements UserInterface {
     @Autowired
     private BookRepository bookRepository;
 
-    // Creating method for saving userdetails while signup if same email means
-    // return null
+   
 
     @Override
     public User signUp(User userDetails) {
@@ -65,10 +64,10 @@ public class UserImpl implements UserInterface {
     }
 
     @Override
-    public User getUser(String userId) {
+    public User getUser(String userId) {                                    
         Optional<User> optionalUser = userRepository.findById(userId);
         if (!optionalUser.isPresent()) {
-            return null; // if book is not there can't edit
+            return null; 
         }
         return optionalUser.get();
     }
@@ -78,14 +77,11 @@ public class UserImpl implements UserInterface {
 
         User optionalUser = userRepository.findById(userId).get();
 
-        // System.out.println(optionalUser);
-
         if (optionalUser == null) {
             return null;
         }
 
         List<Carts> cart = optionalUser.getOrder();
-        // System.out.println(cart);
 
         if (cart.size() > 1 || null == cart) {
             return null;
@@ -96,7 +92,8 @@ public class UserImpl implements UserInterface {
         cart.add(newcart);
 
         optionalUser.setOrder(cart);
-        // update copies
+
+        // update copies in the book repository
         Optional<Book> optionalBook = bookRepository.findById(bookId);
 
         if (!optionalBook.isPresent()) // return null if book not present

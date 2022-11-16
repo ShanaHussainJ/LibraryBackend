@@ -9,8 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-
-// Mapping POJO class to document
 @Document(collection = "user")
 public class User {
     @Id

@@ -45,7 +45,7 @@ public class BookImpl implements BookInterface {
     public Book editBook(String bookId, Book bookDetails) {
         Optional<Book> optionalBook = bookRepository.findById(bookId);
         if (!optionalBook.isPresent()) {
-            return null; // if book is not there can't edit
+            return null; 
         }
 
         Book book = optionalBook.get();
@@ -61,6 +61,7 @@ public class BookImpl implements BookInterface {
     }
 
     // delete book
+
     public Boolean deleteBook(String bookId) {
         if (!bookRepository.existsById(bookId))
             return false;
@@ -75,11 +76,12 @@ public class BookImpl implements BookInterface {
     }
 
     // get Single Book
+
     @Override
     public Book getBook(String bookId) {
         Optional<Book> optionalBook = bookRepository.findById(bookId);
         if (!optionalBook.isPresent()) {
-            return null; // if book is not there can't edit
+            return null; 
         }
         return optionalBook.get();
     }

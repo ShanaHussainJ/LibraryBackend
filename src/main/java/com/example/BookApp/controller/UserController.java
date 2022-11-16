@@ -21,8 +21,6 @@ public class UserController {
     @Autowired
     private UserImpl userServiceImpl;
 
-    // Post userdetails in Mongodb and connect to service class using return
-    // userserviceImpl
     @PostMapping("/signup")
     public User signUp(@RequestBody User userDetails) {
         return userServiceImpl.signUp(userDetails);
