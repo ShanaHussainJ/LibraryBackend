@@ -20,31 +20,31 @@ import com.example.BookApp.services.BookImpl;
 public class BookController {
 
     @Autowired
-    public BookImpl bookServiceImpl;
+    public BookImpl bookImpl;
 
     @PostMapping("/addbooks")
     public Book addBook(@RequestBody Book bookDetails) {
-        return bookServiceImpl.addBook(bookDetails);
+        return bookImpl.addBook(bookDetails);
     }
 
     @PutMapping("/editbooks/{id}")
     public Book editBook(@PathVariable("id") String bookId, @RequestBody Book editBookDetails) {
-        return bookServiceImpl.editBook(bookId, editBookDetails);
+        return bookImpl.editBook(bookId, editBookDetails);
     }
 
     @DeleteMapping("/deletebook/{id}")
     public Boolean deleteBook(@PathVariable("id") String bookId) {
-        return bookServiceImpl.deleteBook(bookId);
+        return bookImpl.deleteBook(bookId);
     }
 
     @GetMapping("/viewallbooks")
     public List<Book> viewAllBooks() {
-        return bookServiceImpl.viewAllBooks();
+        return bookImpl.viewAllBooks();
     }
 
     @GetMapping("/getbook/{id}")
     public Book getBook(@PathVariable("id") String bookId) {
-        return bookServiceImpl.getBook(bookId);
+        return bookImpl.getBook(bookId);
     }
 
 }

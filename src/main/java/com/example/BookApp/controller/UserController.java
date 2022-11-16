@@ -19,31 +19,31 @@ import com.example.BookApp.services.UserImpl;
 public class UserController {
 
     @Autowired
-    private UserImpl userServiceImpl;
+    private UserImpl userImpl;
 
     @PostMapping("/signup")
     public User signUp(@RequestBody User userDetails) {
-        return userServiceImpl.signUp(userDetails);
+        return userImpl.signUp(userDetails);
     }
 
     @PostMapping("/login")
     public User logIn(@RequestBody User userDetails) {
-        return userServiceImpl.logIn(userDetails);
+        return userImpl.logIn(userDetails);
     }
 
     @GetMapping("/getuser/{id}")
     public User getUser(@PathVariable("id") String userId) {
-        return userServiceImpl.getUser(userId);
+        return userImpl.getUser(userId);
     }
 
     @PutMapping("/checkout/{id}/{bookId}")
     public User CheckoutBook(@PathVariable("id") String userId, @PathVariable("bookId") String bookId) {
-        return userServiceImpl.CheckoutBook(userId, bookId);
+        return userImpl.CheckoutBook(userId, bookId);
     }
 
     @PutMapping("/returnbook/{id}/{bookId}")
     public User returnBook(@PathVariable("id") String userId, @PathVariable("bookId") String bookId) {
-        return userServiceImpl.returnBook(userId, bookId);
+        return userImpl.returnBook(userId, bookId);
 
     }
 }

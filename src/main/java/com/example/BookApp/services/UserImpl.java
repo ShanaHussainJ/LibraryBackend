@@ -27,8 +27,6 @@ public class UserImpl implements UserInterface {
     @Autowired
     private BookRepository bookRepository;
 
-   
-
     @Override
     public User signUp(User userDetails) {
         User user = userRepository.findByEmail(userDetails.getEmail());
@@ -83,7 +81,7 @@ public class UserImpl implements UserInterface {
 
         List<Carts> cart = optionalUser.getOrder();
 
-        if (cart.size() > 1 || null == cart) {
+        if (cart.size() > 1) {
             return null;
         }
         Carts newcart = new Carts();
