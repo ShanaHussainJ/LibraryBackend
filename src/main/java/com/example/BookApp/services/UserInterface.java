@@ -1,7 +1,10 @@
 package com.example.BookApp.services;
 
+import org.springframework.stereotype.Component;
+
 import com.example.BookApp.model.User;
 
+@Component
 interface UserInterface {
 
     public abstract User signUp(User userDetails);

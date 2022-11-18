@@ -33,7 +33,6 @@ public class UserImpl implements UserInterface {
 
         if (user != null) {
             return null;
-
         }
         PreId preIdModel = preIdRepository.findByType("user");
         Integer preId = preIdModel.getPreviousId();
@@ -100,7 +99,7 @@ public class UserImpl implements UserInterface {
         Book book = optionalBook.get();
 
         Integer copiesForCheckout = book.getCopiesForCheckout();
-        book.setCopiesForCheckout(--copiesForCheckout);
+        book.setCopiesForCheckout(copiesForCheckout -1);
 
         bookRepository.save(book);
 
