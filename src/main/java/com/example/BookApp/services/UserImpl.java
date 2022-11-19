@@ -109,6 +109,7 @@ public class UserImpl implements UserInterface {
 
     @Override
     public User returnBook(String userId, String bookId) {
+        
         Optional<User> optionalUser = userRepository.findById(userId);
 
         if (!optionalUser.isPresent()) {
@@ -121,6 +122,7 @@ public class UserImpl implements UserInterface {
 
         
         cart.removeIf(book -> book.getCheckoutBookId().equals(bookId));
+
         // while (size > 0) {
         // if (cart.get(--size).getCheckoutBookId().equals(bookId))
         // cart.removeIf(null)
