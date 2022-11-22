@@ -30,11 +30,13 @@ public class BookImpl implements BookInterface {
         }
         PreId prevIdModel = preIdRepository.findByType("book");
         Integer prevId = prevIdModel.getPreviousId();
-        if (prevId > 9) {
-            bookDetails.setId("BN0" + ++prevId);
-        } else {
-            bookDetails.setId("BN00" + ++prevId);
-        }
+        bookDetails.setId(String.format("BN%02d",++prevId));  
+        
+        // if (prevId > 9) {
+        //     bookDetails.setId("BN0" + ++prevId);
+        // } else {
+        //     bookDetails.setId("BN00" + ++prevId);
+        // }
 
         prevIdModel.setPreviousId(prevId);
         preIdRepository.save(prevIdModel);

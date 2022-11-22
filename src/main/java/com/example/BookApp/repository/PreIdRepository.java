@@ -7,5 +7,6 @@ import com.example.BookApp.model.PreId;
 @Repository
 public interface PreIdRepository extends MongoRepository<PreId, String> {
     public PreId findByType(String type);
+    public PreId save(Integer preIdModel);
 
 }

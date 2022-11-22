@@ -36,13 +36,15 @@ public class UserImpl implements UserInterface {
         }
         PreId preIdModel = preIdRepository.findByType("user");
         Integer preId = preIdModel.getPreviousId();
-        if (preId > 9) {
-            userDetails.setId("UN0" + ++preId);
-            userDetails.setRole("user");
-        } else {
-            userDetails.setId("UN00" + ++preId);
-            userDetails.setRole("user");
-        }
+        userDetails.setId(String.format("UN%02d",++preId));  
+        userDetails.setRole("user");
+        // if (preId > 9) {
+        //     userDetails.setId("UN0" + ++preId);
+        //     userDetails.setRole("user");
+        // } else {
+        //     userDetails.setId("UN00" + ++preId);
+        //     userDetails.setRole("user");
+        // }
 
         preIdModel.setPreviousId(preId);
         preIdRepository.save(preIdModel);
